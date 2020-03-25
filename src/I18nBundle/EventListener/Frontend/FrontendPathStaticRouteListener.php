@@ -63,7 +63,7 @@ class FrontendPathStaticRouteListener implements EventSubscriberInterface
         //transform locale style to given url mapping - if existing
         if (array_key_exists($params['_locale'], $urlMapping)) {
             $fragments = array_values(array_filter(explode(DIRECTORY_SEPARATOR, $frontEndPath)));
-            if ($fragments[0] === $params['_locale']) {
+            if ($fragments[0] === $params['_locale'] && !empty($urlMapping[$params['_locale']])) {
                 //replace first value in array!
                 $fragments[0] = $urlMapping[$params['_locale']];
                 $addSlash = substr($frontEndPath, 0, 1) === DIRECTORY_SEPARATOR;
